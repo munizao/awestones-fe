@@ -1,9 +1,6 @@
 import React from 'react';
-import useClient from '../hooks/useClient';
-import useRoom from '../hooks/useRoom';
 
-const AbandonButton = () => {
-  const room = useRoom(useClient());
+const AbandonButton = (room) => {
   return (
     <div onClick={()=>{
         room.send("abandon");

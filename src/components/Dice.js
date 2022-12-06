@@ -1,6 +1,4 @@
 import React from 'react';
-import useClient from '../hooks/useClient';
-import useRoom from '../hooks/useRoom';
 
 const Dice = (dice) => {
   return (

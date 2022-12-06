@@ -27,7 +27,7 @@ const Game = ({room, playerId}) => {
         <StoneBox stones={room.state.potStones}>Unclaimed Stones</StoneBox>
         <StoneBox stones={selfPlayer.stones}>Your Stones</StoneBox>
         <Dice dice={room.state.dice}></Dice>
-        <AbandonButton></AbandonButton>
+        <AbandonButton room={room}></AbandonButton>
       </div>
     )
   }
