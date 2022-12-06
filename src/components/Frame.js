@@ -1,23 +1,18 @@
 import React from 'react';
 import useClient from '../hooks/useClient';
 import useRoom from '../hooks/useRoom';
-import AbandonButton from './AbandonButton';
 import StatusMessage from './StatusMessage';
 import Game from './Game';
+import Lobby from './Lobby';
 
 const Frame = () => {
-  // const room = useRoom(useClient());
+  const {createRoom, joinRoom, players, room, playerId} = useRoom(useClient());
   return (
     <div>
-      <StatusMessage></StatusMessage>
-      Game goes here.
-      <Lobby></Lobby>
-      <Game></Game>
-      
-      <AbandonButton></AbandonButton>
-      {/* {console.log("game room", room)} */}
+      {/* <StatusMessage room={room}></StatusMessage> */}
+      {playerId !== -1 ? <Game room={room} players={players} playerId={playerId}></Game> : <Lobby createRoom={createRoom} joinRoom={joinRoom}></Lobby>}
     </div>
   )
 }
 
-export default Frame;
+export { Frame };

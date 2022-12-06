@@ -5,6 +5,7 @@ const useClient = () => {
   const [client, setClient] = useState();
 
   useEffect(() => {
+    console.log("useClient useEffect");
     if (!client) {
       // use current hostname/port as colyseus server endpoint
       const location = window.location;

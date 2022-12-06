@@ -1,7 +1,7 @@
-import React from 'react';
-import useClient from '../hooks/useClient';
+import React, {useState} from 'react';
 
-const Lobby = () => {
+const Lobby = ({ createRoom, joinRoom }) => {
+  const [gameID, setGameID] = useState('');
   return (
     <div>
       <p>To obtain unlimited power, you must collect a complete set of the 
@@ -10,9 +10,16 @@ const Lobby = () => {
         annihilating your mortal form! {'('}That's all I've got.{')'}
       </p>
       <ul>
-        <li>Create new game. {'('}You will be the first player.{')'}</li>
-        <li>Join a game somebody else has created by pasting their game ID: <input></input></li>
+        <li><button onClick={createRoom}>Create new game.</button> {'('}You will be the first player.{')'}</li>
+        <li>Join a game somebody else has created: 
+          <input type="text" 
+          value={gameID} 
+          onChange={({ target }) => setGameID(target.value)} 
+          placeholder="Paste game id here"></input> 
+          <button onClick={() => joinRoom(gameID)}>Join</button></li>
       </ul>
     </div>
   );
 }
+
+export default Lobby;

@@ -3,19 +3,20 @@ import {useEffect} from 'react';
 import useClient from '../hooks/useClient';
 import useRoom from '../hooks/useRoom';
 
-const StatusMessage = () => {
-  const room = useRoom(useClient());
+const StatusMessage = ({room}) => {
+  // const room = useRoom(useClient());
   const state = room?.state;
   const gameActive = room?.state?.gameActive;
+  console.log("StatusMessage.js room.id", room?.id);
   useEffect(() => {
-  }, [room, state, gameActive]);
+  }, [room, room?.id, state, gameActive]);
   let message = "Setting up...";
   if (state) {
     if (gameActive) {
       message = "Ready"
     }
     else {
-      message = "Waiting for opponent";
+      message = "Waiting for opponent to join using Game ID " + room.id + ".";
     }
   }
 

@@ -1,15 +1,12 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 
-const useRoomField = (room, field) => {
-  const [field, setField] = useState();
+const useRoomField = (room, fieldName) => {
+
   const roomState = room?.state;
   useEffect(() => {
-    if (roomState) {
-
-    }
-  }, [roomState, field]);
+  }, [JSON.stringify(roomState[fieldName])]);
   
-  return value;
+  return roomState[fieldName];
 }
 
 export default useRoomField;

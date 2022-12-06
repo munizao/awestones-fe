@@ -2,18 +2,12 @@ import React from 'react';
 import useClient from '../hooks/useClient';
 import useRoom from '../hooks/useRoom';
 
-const Dice = () => {
-  const room = useRoom(useClient());
-  if (room && room.state) {
-    return (
-      <div>
-        Dice: {room.state.dice[0]}, {room.state.dice[1]}
-      </div>
-    );
-  }
-  else {
-    return null;
-  }
+const Dice = (dice) => {
+  return (
+    <div>
+      Dice: {dice[0]}, {dice[1]}
+    </div>
+  );
 }
 
 export default Dice;
