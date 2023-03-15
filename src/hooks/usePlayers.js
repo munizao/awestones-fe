@@ -13,7 +13,7 @@ const usePlayers = (room) => {
       console.log("**room.id", room.id);
       console.log("**player", player, "has changes at", key);
       setUpdate(update + 1);
-      player.triggerAll();
+      player.triggerAll(); // force "onChange" to be called immediately
     }
 
     room.state.players.onChange = (player, key) => {

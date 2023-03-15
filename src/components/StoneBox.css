@@ -1,0 +1,18 @@
+.Match {
+  border-width: 2px;
+  border-color: rgb(132, 21, 166);
+  background-color: gray;
+}
+
+.StoneList {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+}
+
+.StoneList li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 .5em 0 .5em;
+}

@@ -1,4 +1,5 @@
 import React from 'react';
+import './StoneBox.css';
 // const stoneIcons = [];
 
 function importAll(r) {
@@ -8,22 +9,30 @@ function importAll(r) {
 const stoneIconSrcs = importAll(require.context('../assets', false, /stone[0-5]\.svg$/));
 console.log(stoneIconSrcs);
 
-// [...Array(6).keys()].forEach(n => {
-//   require('stone' + n + '.svg').then(icon => {
-//     stoneIcons.push(icon);
-//   })
-// });
+const stoneIsMatch = (room, active, stone) => {
+  if (room && room.state && active) {
+    room.state.matches.forEach((matchStone) => {
+      if (matchStone === stone) {
+        return true;
+      }
+    });
+  }
+  return false;
+}
 
-// import stone0 from '../assets/stone0.svg';
-
-const StoneBox = (props) => {
+const StoneBox = ({children, stones, room, active}) => {
   return (
     <div>
-      {props.children}
-      <ul>
-        {props.stones.map((stone, i) => 
+      {children}
+      <ul className={"StoneList"}>
+        {stones.map((stone, i) => 
           <li key={i}>
-            {stone} × <img src={stoneIconSrcs[i]} alt={"TODO"}/>
+            {stone} × <img className={stoneIsMatch(room, active, i) ? "Match" : null} 
+            onClick={() => {
+              room.send("select-stone", i);
+            }}
+            src={stoneIconSrcs[i]} 
+            alt={"TODO"}/>
           </li>
         )}
       </ul>

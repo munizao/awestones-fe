@@ -1,9 +1,10 @@
 import React from 'react';
 
-const AbandonButton = (room) => {
+const AbandonButton = ({room}) => {
   return (
     <div onClick={()=>{
-        room.send("abandon");
+        console.log(room);
+        room.send("abandon", {});
       }}>
       Abandon Game
     </div>

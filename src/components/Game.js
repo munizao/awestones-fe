@@ -1,8 +1,8 @@
 import React from 'react';
-import Dice from './Dice';
 import StoneBox from './StoneBox';
 import AbandonButton from './AbandonButton';
 import StatusMessage from './StatusMessage';
+import DiceBox from './DiceBox';
 
 
 const Game = ({room, playerId}) => {
@@ -14,6 +14,11 @@ const Game = ({room, playerId}) => {
   console.log("Player count", room?.state?.players?.length);
   // console.log("Game players player count", players.length);
   // console.log("Game players", players);
+
+  const active = (stones) => {
+
+  }
+
   if (room && room.state && room.state.players.length === 2) {
     console.log("room game.js", room);
     console.log("player map size", room.state.playerSessionMap.size);
@@ -23,10 +28,11 @@ const Game = ({room, playerId}) => {
     const otherPlayer = room.state.players[(playerId + 1) % 2];
     return (
       <div>
-        <StoneBox stones={otherPlayer.stones}>Opponent's Stones</StoneBox>
-        <StoneBox stones={room.state.potStones}>Unclaimed Stones</StoneBox>
-        <StoneBox stones={selfPlayer.stones}>Your Stones</StoneBox>
-        <Dice dice={room.state.dice}></Dice>
+        <GameMessage room={room}></GameMessage>
+        <StoneBox room={room} stones={otherPlayer.stones} active={false}>Opponent's Stones</StoneBox>
+        <StoneBox room={room} stones={room.state.potStones} active={false}>Unclaimed Stones</StoneBox>
+        <StoneBox room={room} stones={selfPlayer.stones} active={false}>Your Stones</StoneBox>
+        <DiceBox room={room} dice={room.state.dice}></DiceBox>
         <AbandonButton room={room}></AbandonButton>
       </div>
     )
