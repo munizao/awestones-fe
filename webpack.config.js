@@ -57,11 +57,19 @@ module.exports = {
         ]
       },
       {
-        test: /\.(jpeg|jpg|png|svg)$/,
+        test: /\.(jpeg|jpg|png)$/,
         use: {
           loader: 'url-loader',
           options: { limit: 1000 },
         },
+      },
+      {
+        test: /\.svg$/,
+        type: 'asset',
+        loader: 'svgo-loader',
+        options: {
+          configFile: false
+        }
       }
     ]
   }

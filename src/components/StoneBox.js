@@ -12,6 +12,7 @@ console.log(stoneIconSrcs);
 const stoneIsMatch = (room, active, stone) => {
   if (room && room.state && active) {
     room.state.matches.forEach((matchStone) => {
+      console.log("matchStone, stone", matchStone, stone);
       if (matchStone === stone) {
         return true;
       }
@@ -27,7 +28,7 @@ const StoneBox = ({children, stones, room, active}) => {
       <ul className={"StoneList"}>
         {stones.map((stone, i) => 
           <li key={i}>
-            {stone} × <img className={stoneIsMatch(room, active, i) ? "Match" : null} 
+            {stone} × <img className={stoneIsMatch(room, active, i) ? "match" : null} 
             onClick={() => {
               room.send("select-stone", i);
             }}

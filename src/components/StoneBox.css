@@ -1,7 +1,8 @@
-.Match {
+.match {
   border-width: 2px;
   border-color: rgb(132, 21, 166);
   background-color: gray;
+  border-style: solid;
 }
 
 .StoneList {
